@@ -1,0 +1,43 @@
+---
+/* No frontmatter needed */
+---
+
+<h1
+  id="headline"
+  class="text-3xl leading-tight font-serif font-medium sm:text-5xl sm:leading-tight opacity-0 max-w-3xl mx-auto text-center mt-8"
+>
+  <span id="line1"></span><br />
+  <span id="line2"></span>
+</h1>
+
+<script type="module" client:load>
+  // 1. Confirm the script ran
+  console.log('🔔 [AnimatedHeader] script started');
+
+  import { gsap } from 'gsap';
+  import { TextPlugin } from 'gsap/TextPlugin';
+
+  // 2. Confirm GSAP and TextPlugin are available
+  console.log('🔔 [AnimatedHeader] gsap:', gsap);
+  console.log('🔔 [AnimatedHeader] TextPlugin:', TextPlugin);
+
+  gsap.registerPlugin(TextPlugin);
+  console.log('🔔 [AnimatedHeader] TextPlugin registered');
+
+  // 3. Grab the elements
+  const headline = document.getElementById('headline');
+  const line1El  = document.getElementById('line1');
+  const line2El  = document.getElementById('line2');
+  console.log('🔔 [AnimatedHeader] headline:', headline, 'line1El:', line1El, 'line2El:', line2El);
+
+  const line1 = "Highlighting and celebrating the work from Gothenburg's creative agencies.";
+  const line2 = "Hats off to Gothenburg’s creative talent.";
+
+  // 4. Build the timeline
+  const tl = gsap.timeline({ defaults: { ease: 'none' } });
+  tl.to('#headline', { opacity: 1, duration: 0.5 });
+  tl.to('#line1',    { text: line1, duration: 3 });
+  tl.to('#line2',    { text: line2, duration: 2 }, '-=1');
+
+  console.log('🔔 [AnimatedHeader] timeline created', tl);
+</script>

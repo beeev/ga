@@ -1,18 +1,29 @@
 ---
 import siteConfig from '../data/site-config';
+import AnimatedHero from './AnimatedHero.astro';
 ---
 
-<header class="w-full max-w-3xl mx-auto mb-12 sm:mb-16">
+<style>
+  header .logo-shader {
+    height: 190px !important;
+  }
+  header .logo-shader svg {
+    height: 100% !important;
+  }
+</style>
+
+<header class="w-full max-w-3xl mx-auto mb-12 sm:mb-16 flex flex-col items-start space-y-2">
     {
         siteConfig.logo && siteConfig.logo?.src ? (
             <a href="/">
                 <img src={siteConfig.logo.src} alt={siteConfig.logo.alt || ''} class="max-h-12" />
             </a>
         ) : (
-            <a class="font-serif text-2xl leading-tight font-medium text-theme-foreground sm:text-4xl" href="/">
-                {siteConfig.title}
+            <a href="/">
+                <AnimatedHero />
             </a>
         )
     }
-    {siteConfig.subtitle && <p class="text-sm leading-tight mt-1">{siteConfig.subtitle}</p>}
+    {siteConfig.subtitle && <p class="text-sm leading-tight text-subtitle">{siteConfig.subtitle}</p>}
 </header>
+    

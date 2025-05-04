@@ -22,6 +22,11 @@ const navLinks = siteConfig.headerNavLinks || [];
                     id="menu-items"
                     class="menu flex gap-6 max-md:flex-col max-md:gap-1 max-md:absolute max-md:-top-2.5 max-md:-left-2.5 max-md:max-w-64 max-md:px-3 max-md:pt-16 max-md:pb-10 max-md:z-20 max-md:bg-main max-md:border max-md:border-dashed max-md:border-main"
                 >
+                    <li class="py-1">
+                      <div class="mini-logo">
+                        <span class="mini-logo-g">G</span>A
+                      </div>
+                    </li>
                     {navLinks.map((link) => (
                         <li class="py-1">
                             <NavLink
@@ -36,9 +41,7 @@ const navLinks = siteConfig.headerNavLinks || [];
             </div>
         )
     }
-    <div class="absolute right-0 top-4 z-10 md:top-8">
-        <ThemeToggle />
-    </div>
+
 </nav>
 
 <style>
@@ -88,12 +91,26 @@ const navLinks = siteConfig.headerNavLinks || [];
             @apply -rotate-45;
         }
     }
+
+    .mini-logo {
+      display: inline-block;
+      border: 1px solid white;
+      padding: 0.25rem;
+      color: white;
+      font-weight: bold;
+      transform: rotate(-90deg);
+      transform-origin: center;
+    }
+
+    .mini-logo-g {
+      color: #E10600; /* vibrant red to pair with black and white */
+    }
 </style>
 
 <script>
     function menuToggle() {
         const menu = document.querySelector('.menu');
-        const menuToggleBtn = document.querySelector('.menu-toggle');
+            const menuToggleBtn = document.querySelector('.menu-toggle');
         menuToggleBtn?.addEventListener('click', () => {
             const isMenuExpanded = menuToggleBtn.getAttribute('aria-expanded') === 'true';
             menuToggleBtn.classList.toggle('is-active');

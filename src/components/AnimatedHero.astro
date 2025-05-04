@@ -1,0 +1,84 @@
+---
+/* Typewriter effect for Gothenburg agencies */
+---
+<h1 id="typewriter" class="typewriter"></h1>
+
+<style global>
+  .typewriter {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    /* responsive, but always large */
+    font-size: clamp(4rem, 10vw, 8rem);
+    line-height: 1;
+    min-height: clamp(4rem, 10vw, 8rem);
+    /* tight kerning */
+    letter-spacing: -0.05em;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  
+</style>
+
+<!-- Load GSAP core and TextPlugin as globals -->
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js" client:visible></script>
+<script src="https://unpkg.com/gsap@3/dist/TextPlugin.min.js" client:visible></script>
+
+<script client:visible>
+  // 1. Register the plugin
+  gsap.registerPlugin(TextPlugin);
+
+  // 2. Grab our H1
+  const el = document.getElementById('typewriter');
+
+  // 3. The names to rotate through
+  const agencies = [
+    'Forsman',
+    'Off The Wall',
+    'Dear Friends',
+    'Vekst',
+    'Stendahls',
+    'The Bond',
+    'GIGI',
+    'Around You',
+    'Spoon',
+    'Raket',
+    'Valentin',
+    'Milk',
+    'Where is my pony',
+    'Start',
+    'We are more',
+    'Sould',
+    'Scream',
+    'republikan',
+    'Grebban',
+    /* add more here… */
+  ];
+
+  // 4. Build a timeline: type each name, pause, then erase
+  const tl = gsap.timeline({ repeat: -1 });
+
+  agencies.forEach((name) => {
+    // type it out, one letter at a time
+    tl.to(el, {
+      duration: name.length * 0.15,   // adjust typing speed
+      text: name,
+      ease: 'none'
+    });
+    // hold on full text
+    tl.to({}, { duration: 1 });
+    // delete one letter from the end, one at a time
+    const deleteDuration = name.length * 0.08;
+    const deleteInterval = deleteDuration / name.length;
+    for (let i = name.length; i >= 0; i--) {
+      tl.call(() => {
+        if (i === 0) {
+          el.textContent = '\u00A0';
+        } else {
+          el.textContent = name.substring(0, i);
+        }
+      }, null, "+=" + deleteInterval);
+    }
+  });
+</script>

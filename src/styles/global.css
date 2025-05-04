@@ -1,6 +1,4 @@
 @import '@fontsource-variable/inter' layer(base);
-@import '@fontsource-variable/newsreader' layer(base);
-@import '@fontsource-variable/newsreader/wght-italic.css' layer(base);
 
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
@@ -8,17 +6,12 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-    --text-main: #171717;
-    --bg-main: #f2f1ec;
-    --bg-muted: #eae9e1;
-    --border-main: #171717;
-}
-html.dark {
     --text-main: #f2f1ec;
     --bg-main: #171717;
     --bg-muted: #242424;
     --border-main: #f2f1ec;
 }
+
 
 /* Cyan */
 /*
@@ -53,8 +46,8 @@ html.dark {
 */
 
 @theme inline {
-    --font-sans: 'Inter Variable', sans-serif;
-    --font-serif: 'Newsreader Variable', serif;
+    --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --text-color-main: var(--text-main);
     --background-color-main: var(--bg-main);
     --background-color-muted: var(--bg-muted);
@@ -62,6 +55,14 @@ html.dark {
 }
 
 @layer utilities {
+    .text-subtitle {
+      /* vibrant red for subtitles */
+      color: #E10600;
+      /* Override prose plugin variables */
+      --tw-prose-body: #E10600;
+      --tw-prose-headings: #E10600;
+      --tw-prose-lead: #E10600;
+    }
     .prose {
         --tw-prose-body: var(--text-color-main);
         --tw-prose-headings: var(--text-color-main);
