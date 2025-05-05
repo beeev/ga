@@ -2,7 +2,7 @@
 title: Axkid
 excerpt: 'By Start Communications'
 publishDate: 'May 5 2025'
-isFeatured: 'true'
+isFeatured: true
 tags:
   - Start Communication
 ---
